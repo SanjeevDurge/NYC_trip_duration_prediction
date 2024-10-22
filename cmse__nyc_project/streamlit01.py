@@ -1,7 +1,7 @@
 import streamlit as st
 from PIL import Image
 import pandas as pd
-import plotly.express as px
+# import plotly.express as px
 import nbformat
 import numpy as np
 import matplotlib.pyplot as plt
@@ -219,6 +219,9 @@ def eda_page():
     city_lat_border = (40.63, 40.85)
 
     # Creating interactive scatter plot for pickup locations
+    
+    print("Got here!")
+
     fig_pickup = px.scatter(
         taxi_data,
         x='pickup_longitude',
