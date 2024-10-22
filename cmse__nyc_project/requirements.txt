@@ -1,6 +1,7 @@
 streamlit
 pandas
-plotly==5.16.0
+plotly
+pip>=23.0
 numpy
 matplotlib
 seaborn
