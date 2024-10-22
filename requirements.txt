@@ -1,7 +1,8 @@
 streamlit
 pandas
-plotly==5.16.0
+plotly
 numpy
 matplotlib
 seaborn
+warnings
 scikit-learn
