@@ -16,7 +16,7 @@ st.set_page_config(page_title="Project Dashboard", layout="wide")
 
 @st.cache_data
 def load_data():
-    return pd.read_csv(r'datasets/nyc_taxi_trip_duration_1.csv', encoding='utf-8')
+    return pd.read_csv(r'nyc_taxi_trip_duration_1.csv', encoding='utf-8')
 
 
 taxi_data = load_data()
@@ -27,7 +27,7 @@ def goal_and_overview():
     st.title("Goal and Overview")
 
     # Display the uploaded image (replace with path to image in your environment)
-    img = Image.open(r"datasets/just_image_nyc.png")
+    img = Image.open(r"just_image_nyc.png")
     st.image(img, caption="Taxi Duration Prediction")
 
     st.header("Goal")
@@ -142,7 +142,7 @@ def eda_page():
     taxi_data = load_data()
 
     cols = ['id', 'total_distance', 'total_travel_time', 'number_of_steps']
-    osrm_data = pd.read_csv(r'datasets/osrm_data_train_10_new.csv', usecols=cols)
+    osrm_data = pd.read_csv(r'osrm_data_train_10_new.csv', usecols=cols)
     osrm_data.head()
 
     taxi_data['pickup_datetime'] = pd.to_datetime(taxi_data['pickup_datetime'], format='%Y-%m-%d %H:%M:%S')
@@ -161,7 +161,7 @@ def eda_page():
 
     add_datetime_features(taxi_data)
 
-    holiday_data = pd.read_csv(r'datasets/holiday_data.csv', sep=';')
+    holiday_data = pd.read_csv(r'holiday_data.csv', sep=';')
 
     def add_holiday_features(data1, data2):
         holidays = data2['date'].tolist()
@@ -254,7 +254,7 @@ def eda_page():
     st.plotly_chart(fig_dropoff)
 
     columns = ['time', 'temperature', 'visibility', 'wind speed', 'precip', 'events']
-    weather_data = pd.read_csv(r'datasets/weather_data/weather_data.csv', usecols=columns)
+    weather_data = pd.read_csv(r'weather_data/weather_data.csv', usecols=columns)
     weather_data.head()
 
     weather_data['time'] = pd.to_datetime(weather_data['time'])
