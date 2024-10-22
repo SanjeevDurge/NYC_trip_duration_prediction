@@ -16,7 +16,7 @@ st.set_page_config(page_title="Project Dashboard", layout="wide")
 
 @st.cache_data
 def load_data():
-    return pd.read_csv(r'nyc_taxi_trip_duration_1.csv', encoding='utf-8')
+    return pd.read_csv(r'cmse__nyc_project/nyc_taxi_trip_duration_1.csv', encoding='utf-8')
 
 
 taxi_data = load_data()
@@ -63,7 +63,7 @@ def goal_and_overview():
 
         training dataset: https://drive.google.com/file/d/1X_EJEfERiXki0SKtbnCL9JDv49Go14lF/view
         test dataset: https://drive.google.com/file/d/1C2N2mfONpCVrH95xHJjMcueXvvh_-XYN/view?usp=sharing
-        file with holiday dates: https://lms-cdn.skillfactory.ru/assets/courseware/v1/33bd8d5f6f2ba8d00e2ce66ed0a9f510/asset-v1:SkillFactory+DSPR-2.0+14JULY2021+type@asset+block/holiday_data.csv
+        file with holiday dates: https://lms-cdn.skillfactory.ru/assets/courseware/v1/33bd8d5f6f2ba8d00e2ce66ed0a9f510/asset-v1:SkillFactory+DSPR-2.0+14JULY2021+type@asset+block/holiday_data.
         OSRM geographic data file for the training set: https://drive.google.com/file/d/1ecWjor7Tn3HP7LEAm5a0B_wrIfdcVGwR/view?usp=sharing
         file with OSRM geographic data for the test set: https://drive.google.com/file/d/1wCoS-yOaKFhd1h7gZ84KL9UwpSvtDoIA/view?usp=sharing
         New York weather dataset for 2016: https://lms-cdn.skillfactory.ru/assets/courseware/v1/0f6abf84673975634c33b0689851e8cc/asset-v1:SkillFactory+DSPR-2.0+14JULY2021+type@asset+block/weather_data.zip
@@ -142,7 +142,7 @@ def eda_page():
     taxi_data = load_data()
 
     cols = ['id', 'total_distance', 'total_travel_time', 'number_of_steps']
-    osrm_data = pd.read_csv(r'osrm_data_train_10_new.csv', usecols=cols)
+    osrm_data = pd.read_csv(r'cmse__nyc_project/osrm_data_train_10_new.csv', usecols=cols)
     osrm_data.head()
 
     taxi_data['pickup_datetime'] = pd.to_datetime(taxi_data['pickup_datetime'], format='%Y-%m-%d %H:%M:%S')
@@ -161,7 +161,7 @@ def eda_page():
 
     add_datetime_features(taxi_data)
 
-    holiday_data = pd.read_csv(r'holiday_data.csv', sep=';')
+    holiday_data = pd.read_csv(r'cmse__nyc_project/holiday_data.csv', sep=';')
 
     def add_holiday_features(data1, data2):
         holidays = data2['date'].tolist()
@@ -254,7 +254,7 @@ def eda_page():
     st.plotly_chart(fig_dropoff)
 
     columns = ['time', 'temperature', 'visibility', 'wind speed', 'precip', 'events']
-    weather_data = pd.read_csv(r'weather_data/weather_data.csv', usecols=columns)
+    weather_data = pd.read_csv(r'cmse__nyc_project/weather_data/weather_data.csv', usecols=columns)
     weather_data.head()
 
     weather_data['time'] = pd.to_datetime(weather_data['time'])
